@@ -1,0 +1,56 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(28, 35, 46, 0.9);
+  position: sticky;
+  color: lightgray;
+
+  text-transform: uppercase;
+  .nav-heading {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: lightgray solid 1px;
+
+    h4 {
+      letter-spacing: 1.5px;
+      margin-left: 10px;
+    }
+  }
+
+  .nav-list {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+
+    li {
+      margin: 1.5rem;
+      list-style: none;
+      display: flex;
+      text-align: left;
+      justify-content: flex-start;
+      align-items: center;
+      opacity: 0.8;
+
+      &:hover {
+        color: rgb(75, 169, 191);
+        opacity: 1;
+        transition: 0.3s ease-in-out;
+      }
+      .active {
+        opacity: 1;
+        color: rgb(75, 169, 191);
+        font-weight: bold;
+        transition: 0.6s ease-in-out;
+      }
+
+      * {
+        letter-spacing: 3px;
+        margin: 0.5rem;
+      }
+    }
+  }
+}
