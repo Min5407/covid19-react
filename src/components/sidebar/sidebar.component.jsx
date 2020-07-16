@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./sidebar.style.scss";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import HomeIcon from "@material-ui/icons/Home";
 import LanguageIcon from "@material-ui/icons/Language";
@@ -8,9 +8,6 @@ import AnnouncementIcon from "@material-ui/icons/Announcement";
 import ChatIcon from "@material-ui/icons/Chat";
 
 function Sidebar() {
-  // const [active, setActive] = useState("home");
-  // console.log(this.props.);
-
   return (
     <div className="sidebar">
       <div className="nav-heading">
