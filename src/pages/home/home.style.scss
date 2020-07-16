@@ -2,4 +2,18 @@
   .chartNumbers {
     display: flex;
   }
+
+  .hompage_title {
+    padding: 1rem;
+    color: #555;
+    margin-left: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .map {
+    margin: 15px;
+
+    background-color: #444;
+    // border: 1px red solid;
+  }
 }
