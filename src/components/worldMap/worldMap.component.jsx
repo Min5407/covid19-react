@@ -4,18 +4,7 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
-const rounded = (num) => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
-
 const MapChart = ({ setTooltipContent, mapData }) => {
-  console.log(mapData);
   return (
     <>
       <ComposableMap
@@ -39,16 +28,15 @@ const MapChart = ({ setTooltipContent, mapData }) => {
                       lowerName === data.Country.toLowerCase()
                     );
                   });
-                  {
-                    newData
-                      ? setTooltipContent(
-                          `<strong>${newData.Country}</strong><br/><br/>
+
+                  newData
+                    ? setTooltipContent(
+                        `<strong>${newData.Country}</strong><br/><br/>
                           Total Case: ${newData.TotalConfirmed}<br/>
                           Total Recovered: ${newData.TotalRecovered}<br/>
                           Total Deaths: ${newData.TotalDeaths}<br/>`
-                        )
-                      : setTooltipContent(`<strong>${NAME}</strong>`);
-                  }
+                      )
+                    : setTooltipContent(`<strong>${NAME}</strong>`);
                 }}
                 onMouseLeave={() => {
                   setTooltipContent("");

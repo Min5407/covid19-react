@@ -11,7 +11,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="nav-heading">
-        <img src="https://img.icons8.com/nolan/32/coronavirus.png" />
+        <img alt="" src="https://img.icons8.com/nolan/32/coronavirus.png" />
         <h4>Corona Virus</h4>
       </div>
 

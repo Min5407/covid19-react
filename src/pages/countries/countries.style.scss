@@ -1,0 +1,15 @@
+.countryPage {
+  width: 80%;
+  //   height: 80vh;
+  //   border: 1px red solid;
+  margin: 1rem auto;
+
+  .select {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    * {
+      margin: 10px;
+    }
+  }
+}
