@@ -4,16 +4,26 @@
   }
 
   .hompage_title {
+    display: flex;
+    justify-content: space-between;
     padding: 1rem;
     color: #555;
-    margin-left: 3rem;
+    margin: 0.5rem 2rem;
     text-transform: uppercase;
     margin-bottom: 0.2rem;
   }
   .map {
     margin: 15px;
 
-    background-color: #444;
+    background-color: #555;
+    border: 12px white solid;
+    border-radius: 10px;
     // border: 1px red solid;
+
+    .toolTip {
+      text-align: center;
+      border: 1px tomato solid !important;
+      letter-spacing: 1.1px;
+    }
   }
 }

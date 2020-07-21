@@ -10,6 +10,7 @@ import WorldMap from "../../components/worldMap/worldMap.component";
 function HomePage() {
   const [data, setData] = useState();
   const [content, setContent] = useState("");
+  const [date, setDate] = useState();
 
   const [mapData, setMapData] = useState();
 
@@ -21,6 +22,7 @@ function HomePage() {
         const { data } = await axios.get(url);
         setData(data.Global);
         setMapData(data.Countries);
+        setDate(data.Date.toString().slice(0, 10));
       } catch (error) {
         console.log(error);
       }
@@ -32,7 +34,10 @@ function HomePage() {
   if (data && mapData) {
     return (
       <div className="homePage">
-        <h2 className="hompage_title">World Records</h2>
+        <div className="hompage_title">
+          <h2>World Records</h2>
+          <h2>{date} </h2>
+        </div>
         <div className="chartNumbers">
           {
             <ChartNumbers
@@ -58,8 +63,10 @@ function HomePage() {
         </div>
 
         <div className="map">
-          <WorldMap setTooltipContent={setContent} />
-          <ReactTooltip>{content}</ReactTooltip>
+          <WorldMap mapData={mapData} setTooltipContent={setContent} />
+          <ReactTooltip html multiline className="toolTip">
+            {content}
+          </ReactTooltip>
         </div>
       </div>
     );

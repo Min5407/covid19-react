@@ -14,7 +14,8 @@ const rounded = (num) => {
   }
 };
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = ({ setTooltipContent, mapData }) => {
+  console.log(mapData);
   return (
     <>
       <ComposableMap
@@ -30,8 +31,24 @@ const MapChart = ({ setTooltipContent }) => {
                 key={geo.rsmKey}
                 geography={geo}
                 onMouseEnter={() => {
-                  const { NAME, POP_EST } = geo.properties;
-                  setTooltipContent(`${NAME} — ${rounded(POP_EST)}- min`);
+                  const { NAME } = geo.properties;
+                  let newData = mapData.find(function (data) {
+                    let lowerName = NAME.toLowerCase();
+                    return (
+                      lowerName === data.Slug.toLowerCase() ||
+                      lowerName === data.Country.toLowerCase()
+                    );
+                  });
+                  {
+                    newData
+                      ? setTooltipContent(
+                          `<strong>${newData.Country}</strong><br/><br/>
+                          Total Case: ${newData.TotalConfirmed}<br/>
+                          Total Recovered: ${newData.TotalRecovered}<br/>
+                          Total Deaths: ${newData.TotalDeaths}<br/>`
+                        )
+                      : setTooltipContent(`<strong>${NAME}</strong>`);
+                  }
                 }}
                 onMouseLeave={() => {
                   setTooltipContent("");
