@@ -1,6 +1,6 @@
 .newsPage {
-  border: 1px red solid;
-  width: 70%;
+  //   border: 1px red solid;
+  width: 80%;
   margin: 1rem auto;
   background-color: #fff;
   .articles {
@@ -10,8 +10,8 @@
       flex: 1.2;
     }
     .news-column {
-      padding: 1rem;
       overflow-y: scroll;
+      border: 1px lightgray solid;
 
       height: 400px;
       flex: 0.8;

@@ -20,16 +20,17 @@ const NewsCard = ({
 
   return (
     <div className="newsCard">
-      <img
-        className="newsImage"
-        src={urlToImage !== "" ? urlToImage : defaultImage}
-        alt="unknown"
-      />
-      <h3>{title}</h3>
-      <span>
-        {author.length > 20 ? author.substring(0, 20) + " ...." : author}
-      </span>
-      <p>{name}</p>
+      <div className="flex">
+        <img
+          className="newsImage"
+          src={urlToImage !== "" ? urlToImage : defaultImage}
+          alt="unknown"
+        />
+        <div className="content">
+          <h4>{title}</h4>
+          <p>{name}</p>
+        </div>
+      </div>
     </div>
   );
 };
