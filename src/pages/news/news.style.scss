@@ -1,0 +1,24 @@
+.newsPage {
+  border: 1px red solid;
+  width: 70%;
+  margin: 1rem auto;
+  background-color: #fff;
+  .articles {
+    display: flex;
+
+    .newsHeader {
+      flex: 1.2;
+    }
+    .news-column {
+      padding: 1rem;
+      overflow-y: scroll;
+
+      height: 400px;
+      flex: 0.8;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+  }
+}
