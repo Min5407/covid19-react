@@ -5,37 +5,44 @@
   //   align-items: center;
   min-width: 350px;
   height: 150px;
-  margin: 1rem;
+  margin: 0.5rem 1rem;
   border: 4px #fff solid;
+  background-color: #fff;
   // border-radius: 5%;
 
   &.one {
-    background: linear-gradient(
-      to right,
-      #ff9966,
-      #ff5e62
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 10px #f7b733 solid;
+    // border-bottom: 15px #f7b733 solid;
+    // border-top: 15px #f7b733 solid;
+    // background: linear-gradient(
+    //   to right,
+    //   #ff9966,
+    //   #ff5e62
+    // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.two {
-    background: linear-gradient(
-      to right,
-      #fc4a1a,
-      #f7b733
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 10px #38ef7d solid;
+    // border-top: 15px #38ef7d solid;
+    // background: linear-gradient(
+    //   to right,
+    //   #fc4a1a,
+    //   #f7b733
+    // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.three {
-    background: linear-gradient(
-      to right,
-      #11998e,
-      #38ef7d
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border: 10px #fc4a1a solid;
+    // border-top: 15px #fc4a1a solid;
+    // background: linear-gradient(
+    //   to right,
+    //   #11998e,
+    //   #38ef7d
+    // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
   .card_title {
     display: flex;
     padding: 0.5rem;
-    color: #fff;
-    // justify-content: center;
+    color: #222;
     align-items: center;
     text-transform: uppercase;
 
@@ -47,10 +54,21 @@
   .count {
     font-family: "Crimson Text", serif;
     font-weight: 600;
-    margin: 1rem;
+    margin: 0.5rem;
     text-align: center;
     font-size: 1.4rem;
-    background-color: #fff;
-    border-radius: 15%;
+
+    &.one {
+      border-right: 5px #f7b733 solid;
+      border-left: 5px #f7b733 solid;
+    }
+    &.two {
+      border-right: 5px #38ef7d solid;
+      border-left: 5px #38ef7d solid;
+    }
+    &.three {
+      border-right: 5px #fc4a1a solid;
+      border-left: 5px #fc4a1a solid;
+    }
   }
 }

@@ -5,19 +5,26 @@ import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import ErrorIcon from "@material-ui/icons/Error";
 import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
 
-function ChartNumbers({ data, label, random }) {
+function ChartNumbers({ data, label, number }) {
   const covidData = data;
   const backgroundColor = ["one", "two", "three"];
-
+  console.log(number);
   return (
-    <div className={`card ${backgroundColor[random]}`}>
+    <div className={`card ${backgroundColor[number]}`}>
       <div className="card_title">
-        {label === "Total confirmed" ? <ErrorIcon /> : null}
-        {label === "Total Recovered" ? <LocalHospitalIcon /> : null}
-        {label === "Total Deaths" ? <LocalFloristIcon /> : null}
+        {label === "Total confirmed" ? (
+          <ErrorIcon style={{ color: "#f7b733" }} />
+        ) : null}
+        {label === "Total Recovered" ? (
+          <LocalHospitalIcon style={{ color: "#38ef7d" }} />
+        ) : null}
+        {label === "Total Deaths" ? (
+          <LocalFloristIcon style={{ color: "#fc4a1a" }} />
+        ) : null}
         <h2>{label}</h2>
       </div>
-      <div className="count">
+
+      <div className={`count ${backgroundColor[number]}`}>
         <CountUp start={0} end={covidData} duration={1.5} />
       </div>
     </div>

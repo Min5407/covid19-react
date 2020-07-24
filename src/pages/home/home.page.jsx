@@ -43,21 +43,21 @@ function HomePage() {
             <ChartNumbers
               data={data.TotalConfirmed}
               label="Total confirmed"
-              random={0}
+              number={0}
             />
           }
           {
             <ChartNumbers
               data={data.TotalRecovered}
               label="Total Recovered"
-              random={1}
+              number={1}
             />
           }
           {
             <ChartNumbers
               data={data.TotalDeaths}
               label="Total Deaths"
-              random={2}
+              number={2}
             />
           }
         </div>
