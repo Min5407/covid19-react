@@ -1,12 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./news.style.scss";
-import { fetchNews } from "./newsAPI";
+import { fetchNews, fetchYoutubeNews, youtubeApiKey } from "./newsAPI";
 
 import NewsCard from "../../components/news-card/newsCard.component";
 import NewsHeader from "../../components/newsHeader/newsHeader.component";
 import Loading from "../../components/loading/loading.component";
+import YoutubeVideo from "../../components/youtube-video/youtubeVideo.component";
+
 const NewsPage = () => {
   const [newsData, setNewsData] = useState(null);
+  const [youtubeVideos, setYoutubeVideos] = useState(null);
+
+  const onWheel = (e) => {
+    e.preventDefault();
+    var container = document.getElementById("videoRows");
+    var containerScrollPosition = document.getElementById("videoRows")
+      .scrollLeft;
+    container.scrollTo({
+      top: 0,
+      left: containerScrollPosition + e.deltaY,
+      behaviour: "smooth", //if you want smooth scrolling
+    });
+  };
+
   useEffect(() => {
     const getNews = async () => {
       try {
@@ -19,7 +35,32 @@ const NewsPage = () => {
     getNews();
   }, []);
 
-  if (newsData) {
+  useEffect(() => {
+    const getYoutubeNews = async () => {
+      try {
+        let {
+          data: { items },
+        } = await fetchYoutubeNews.get("search", {
+          params: {
+            part: "snippet",
+            maxResults: 10,
+            key: youtubeApiKey,
+            order: "relevance",
+            q: "covid19 news",
+            relevanceLanguage: "en",
+            type: "video",
+          },
+        });
+
+        setYoutubeVideos(items);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getYoutubeNews();
+  }, []);
+
+  if (newsData && youtubeVideos) {
     return (
       <div className="newsPage">
         <div className="articles">
@@ -32,6 +73,11 @@ const NewsPage = () => {
                 .slice(1, newsData.length)
                 .map((news, index) => <NewsCard key={index} news={news} />)}
           </div>
+        </div>
+        <div className="youtubeNews" id="videoRows" onWheel={onWheel}>
+          {youtubeVideos.map((video, index) => (
+            <YoutubeVideo key={index} data={video} />
+          ))}
         </div>
       </div>
     );

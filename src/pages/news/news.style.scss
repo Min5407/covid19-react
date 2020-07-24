@@ -3,6 +3,8 @@
   width: 80%;
   margin: 1rem auto;
   background-color: #fff;
+  height: 95vh;
+  overflow: hidden;
   .articles {
     display: flex;
 
@@ -20,5 +22,11 @@
         width: 0;
       }
     }
+  }
+
+  .youtubeNews {
+    margin-top: 4rem;
+    display: flex;
+    overflow-x: scroll;
   }
 }

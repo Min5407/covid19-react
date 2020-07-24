@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 500px;
+  height: 600px;
+  flex-direction: column;
+  margin: 0.5rem;
+
+  padding: 0.4rem;
+  cursor: pointer;
+
+  &:hover .thumbnail-container span {
+    transform: translate(-50%, -50%) scale(2.1);
+    color: red;
+    transition: 0.35s ease-in-out;
+  }
+  &:hover .thumbnail-container .thumbnail img {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+  }
+
+  .thumbnail-container {
+    position: relative;
+
+    .thumbnail {
+      overflow: hidden;
+    }
+    span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(2);
+      color: #eee;
+      z-index: 1;
+    }
+  }
+  strong {
+    margin: 1rem 0.5rem;
+  }
+}
