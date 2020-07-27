@@ -103,7 +103,6 @@ const ColumnChart = ({ country }) => {
 
       setGraphState(state);
     }
-    console.log("change");
   }, [confirmedCase]);
   return (
     <div className="chart">

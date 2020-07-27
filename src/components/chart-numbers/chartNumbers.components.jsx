@@ -8,7 +8,6 @@ import LocalFloristIcon from "@material-ui/icons/LocalFlorist";
 function ChartNumbers({ data, label, number }) {
   const covidData = data;
   const backgroundColor = ["one", "two", "three"];
-  console.log(number);
   return (
     <div className={`card ${backgroundColor[number]}`}>
       <div className="card_title">

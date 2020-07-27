@@ -1,26 +1,18 @@
 import React from "react";
 import "./youtubeVideo.style.scss";
-import Youtube from "react-youtube";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
+import YoutubeModal from "../youtube-modal/youtubeModal.component";
 
 const YoutubeVideo = ({
   data: {
     snippet,
     id: { videoId },
   },
+  openModal,
 }) => {
-  const opts = {
-    height: "250",
-    width: "400",
-    playerVars: {
-      origin: window.location.origin,
-
-      // https://developers.google.com/youtube/player_parameters
-    },
-  };
-  console.log(videoId, snippet.thumbnails);
+  // console.log(videoId, snippet.thumbnails);
   return (
-    <div className="container">
+    <div className="container" onClick={() => openModal(videoId)}>
       <div className="thumbnail-container">
         <div className="thumbnail">
           <img src={snippet.thumbnails.medium.url} alt="default" />
