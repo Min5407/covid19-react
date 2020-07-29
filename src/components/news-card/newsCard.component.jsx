@@ -1,28 +1,21 @@
 import React from "react";
 import "./newsCard.style.scss";
 
-const NewsCard = ({
-  news: {
-    title,
-    url,
-    urlToImage,
-    source: { name },
-  },
-}) => {
+const NewsCard = ({ news: { title, link, image, source } }) => {
   const defaultImage =
-    "https://m.economictimes.com/thumb/msid-74665367,width-1200,height-900,resizemode-4,imgsize-980841/from-the-trumpet-shaped-protrusion-at-the-centre-of-a-daffodil-or-narcissus-to-a-part-of-a-cornice-with-a-vertical-face-to-the-most-popular-shape-of-chandeliers-corona-has-long-been-an-acceptable-part-of-society-.jpg";
+    "https://media.istockphoto.com/vectors/covid19-latest-news-coronavirus-red-background-concept-vector-id1212303021";
 
   return (
     <div className="newsCard">
-      <div onClick={() => window.open(url)} className="flex">
+      <div onClick={() => window.open(link)} className="flex">
         <img
           className="newsImage"
-          src={urlToImage !== "" ? urlToImage : defaultImage}
+          src={image !== "" ? image : defaultImage}
           alt="unknown"
         />
         <div className="content">
           <h4>{title}</h4>
-          <p>{name}</p>
+          <p>{source}</p>
         </div>
       </div>
     </div>
