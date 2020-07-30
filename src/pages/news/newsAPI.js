@@ -14,7 +14,6 @@ export const fetchNews = async () => {
   const modifedNews = articles.filter(
     (v, i, a) => a.findIndex((t) => t.title === v.title) === i
   );
-  console.log(modifedNews);
   return modifedNews;
 };
 

@@ -6,6 +6,7 @@ import Sidebar from "./components/sidebar/sidebar.component";
 import HomePage from "./pages/home/home.page";
 import Countries from "./pages/countries/countries.component";
 import NewsPage from "./pages/news/news.page";
+import Chat from "./pages/chat/chat.page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/home" component={HomePage}></Route>
         <Route exact path="/country" component={Countries}></Route>
         <Route exact path="/news" component={NewsPage}></Route>
+        <Route exact path="/chat" component={Chat}></Route>
       </Switch>
     </div>
   );

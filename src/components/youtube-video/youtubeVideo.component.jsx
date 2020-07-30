@@ -1,7 +1,6 @@
 import React from "react";
 import "./youtubeVideo.style.scss";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
-import YoutubeModal from "../youtube-modal/youtubeModal.component";
 
 const YoutubeVideo = ({
   data: {

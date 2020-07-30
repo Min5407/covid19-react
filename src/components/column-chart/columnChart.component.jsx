@@ -25,7 +25,6 @@ const ColumnChart = ({ country }) => {
       setConfirmedCase(confirmedData);
     };
     getConfirmedData();
-    console.log("hi");
   }, [country]);
 
   useEffect(() => {
