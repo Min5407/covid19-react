@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./chat.style.scss";
 import { auth } from "../../firebase/firebase";
 import ChatLoginPage from "../chat-login/chat_login.page";
+import ChatBox from "../../components/chatBox/chatBox.component";
+
 const Chat = () => {
   const [user, setUser] = useState(null);
 
   return (
-    <div>
+    <div className="chatPage">
       {!user && <ChatLoginPage setUser={setUser} />}
-
-      {user && <button onClick={() => auth.signOut()}> sign</button>}
+      {user && <ChatBox user={user} />}
     </div>
   );
 };

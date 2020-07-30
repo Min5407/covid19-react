@@ -1,0 +1,25 @@
+.chatBox {
+  //   align-items: center;
+
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px plum solid;
+
+    .user {
+      display: flex;
+      margin: 0 1rem;
+      justify-content: center;
+      align-items: center;
+
+      h3 {
+        margin: 1rem;
+      }
+    }
+
+    .btn {
+      margin: 1rem;
+    }
+  }
+}
