@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./chat.style.scss";
-import { auth } from "../../firebase/firebase";
 import ChatLoginPage from "../chat-login/chat_login.page";
 import ChatBox from "../../components/chatBox/chatBox.component";
 
