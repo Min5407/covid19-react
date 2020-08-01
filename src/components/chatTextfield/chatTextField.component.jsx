@@ -8,15 +8,15 @@ import IconButton from "@material-ui/core/IconButton";
 const ChatTextField = () => {
   const [message, setMessage] = useState("");
   const [inputState, setInputState] = useState(true);
-  const [image, setImage] = useState();
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
-    if (message === "") {
-      setInputState(inputState);
-    } else if (message !== "" || image) {
-      setInputState(!inputState);
+    if (message !== "" || image) {
+      setInputState(false);
+    } else if (message === "") {
+      setInputState(true);
     }
-  });
+  }, [message, image]);
 
   const handleFileInputClick = () => {
     inputFileRef.current.click();
@@ -24,12 +24,10 @@ const ChatTextField = () => {
 
   const inputMessage = (e) => {
     setMessage(e.target.value);
-    //  setInputState(false);
   };
 
   const setFile = (event) => {
     setImage(event.target.files[0].name);
-    //  setInputState(false);
   };
 
   const inputFileRef = useRef(null);
