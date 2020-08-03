@@ -4,16 +4,21 @@ import SendIcon from "@material-ui/icons/Send";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
+import ChatMessage from "../chatMessage/chatMessage.component";
+import ImageProgressBar from "../imageProgress/imageProgress.component";
+import UploadMessage from "./firebase.api";
 
-const ChatTextField = () => {
+const ChatTextField = ({ user }) => {
   const [message, setMessage] = useState("");
   const [inputState, setInputState] = useState(true);
   const [image, setImage] = useState(null);
+  const [fullMessage, setFullMessage] = useState(null);
+  // const [fullMessageState, setFullMessageState] = useState(false);
 
   useEffect(() => {
     if (message !== "" || image) {
       setInputState(false);
-    } else if (message === "") {
+    } else if (message === "" && !image) {
       setInputState(true);
     }
   }, [message, image]);
@@ -27,13 +32,28 @@ const ChatTextField = () => {
   };
 
   const setFile = (event) => {
-    setImage(event.target.files[0].name);
+    setImage(event.target.files[0]);
+  };
+
+  const sendMessage = () => {
+    const data = { user: user, message: message, image: image };
+    setFullMessage(data);
+
+    setMessage("");
+    setImage(null);
   };
 
   const inputFileRef = useRef(null);
+
   return (
     <div className="chatTextField">
-      <h3>{message}</h3>
+      {fullMessage && (
+        <ImageProgressBar
+          fullMessage={fullMessage}
+          setFullMessage={setFullMessage}
+        />
+      )}
+
       <input
         style={{ display: "none" }}
         onChange={setFile}
@@ -41,7 +61,7 @@ const ChatTextField = () => {
         accept="image/*"
         ref={inputFileRef}
       />
-      <div className="textField"> messages</div>
+      <div className="textField">{fullMessage && <ChatMessage />}</div>
       <div className="input">
         <IconButton onClick={handleFileInputClick} aria-label="add">
           <AddIcon />
@@ -58,6 +78,7 @@ const ChatTextField = () => {
             color="primary"
             variant="contained"
             endIcon={<SendIcon />}
+            onClick={sendMessage}
           >
             Send
           </Button>

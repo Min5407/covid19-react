@@ -27,7 +27,7 @@ const ChatBox = ({ user }) => {
         </div>
       </div>
 
-      <ChatTextField />
+      <ChatTextField user={user} />
     </div>
   );
 };
