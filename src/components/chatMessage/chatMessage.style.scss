@@ -1,0 +1,36 @@
+.chatMessage {
+  margin: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.chatMessageR {
+    flex-direction: row-reverse;
+  }
+
+  .avatar {
+    margin: 1rem;
+  }
+
+  .message-left {
+    * {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    text-align: left;
+    //  display: flex;
+    //  flex-direction: column;
+    //  align-items: center;
+  }
+  .message-right {
+    * {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-align: right;
+  }
+}

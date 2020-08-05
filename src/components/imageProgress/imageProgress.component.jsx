@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./imageProgress.style.scss";
-import UploadMessage from "../chatTextfield/firebase.api";
+import { UploadMessage } from "../chatTextfield/firebase.api";
 
 const ImageProgressBar = ({ fullMessage, setFullMessage }) => {
   const { image } = fullMessage;

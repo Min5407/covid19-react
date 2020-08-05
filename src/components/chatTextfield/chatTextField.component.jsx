@@ -6,14 +6,26 @@ import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import ChatMessage from "../chatMessage/chatMessage.component";
 import ImageProgressBar from "../imageProgress/imageProgress.component";
-import UploadMessage from "./firebase.api";
+import Loading from "../loading/loading.component";
+
+import { FetchMessages } from "./firebase.api";
 
 const ChatTextField = ({ user }) => {
   const [message, setMessage] = useState("");
   const [inputState, setInputState] = useState(true);
   const [image, setImage] = useState(null);
   const [fullMessage, setFullMessage] = useState(null);
+
+  const { docs } = FetchMessages("message");
   // const [fullMessageState, setFullMessageState] = useState(false);
+
+  let messageBottomRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messageBottomRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [docs]);
 
   useEffect(() => {
     if (message !== "" || image) {
@@ -61,7 +73,16 @@ const ChatTextField = ({ user }) => {
         accept="image/*"
         ref={inputFileRef}
       />
-      <div className="textField">{fullMessage && <ChatMessage />}</div>
+      <div className="textField">
+        {docs ? (
+          docs.map((doc) => (
+            <ChatMessage key={doc.id} data={doc} currentUser={user} />
+          ))
+        ) : (
+          <Loading />
+        )}
+        <div ref={messageBottomRef} />
+      </div>
       <div className="input">
         <IconButton onClick={handleFileInputClick} aria-label="add">
           <AddIcon />

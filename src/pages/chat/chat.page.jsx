@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./chat.style.scss";
 import ChatLoginPage from "../chat-login/chat_login.page";
 import ChatBox from "../../components/chatBox/chatBox.component";

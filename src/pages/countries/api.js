@@ -14,7 +14,6 @@ export const fetchUserLocation = async () => {
     data: { country_code },
   } = await axios(`https://geolocation-db.com/json/${getLocationApiKey}`);
 
-  // console.log(new Date().toJSON().slice(0, 10).replace(/-/g, "-"));
   return country_code;
 };
 

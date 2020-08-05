@@ -6,7 +6,10 @@
   background-color: #fff;
   .select {
     display: flex;
-    justify-content: flex-end;
+    padding: 0.3rem;
+    margin: 0.2rem;
+    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
     * {
       margin: 10px;

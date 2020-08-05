@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { fireStorage, db, timeStamp } from "../../firebase/firebase";
 
-const UploadMessage = (fullMessage) => {
+export const UploadMessage = (fullMessage) => {
   const { image, user, message } = fullMessage;
   const [fileProgress, setFileProgress] = useState(0);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
-  //   console.log(fullMessage);
 
   useEffect(() => {
     const createdAt = timeStamp();
@@ -31,7 +30,6 @@ const UploadMessage = (fullMessage) => {
           const url = await storageRef.getDownloadURL();
           setUrl(url);
 
-          console.log({ url, user, message, createdAt });
           collectionRef.add({ url, user, message, createdAt });
         }
       );
@@ -43,4 +41,25 @@ const UploadMessage = (fullMessage) => {
   return { fileProgress, error, url };
 };
 
-export default UploadMessage;
+export const FetchMessages = (collection) => {
+  const [docs, setDocs] = useState(null);
+
+  useEffect(() => {
+    const unsub = db
+      .collection(collection)
+      .orderBy("createdAt", "asc")
+      .onSnapshot((snap) => {
+        let documents = [];
+        snap.forEach((doc) => {
+          documents.push({ ...doc.data(), id: doc.id });
+        });
+
+        setDocs(documents);
+      });
+
+    return () => {
+      unsub();
+    };
+  }, [collection]);
+  return { docs };
+};
